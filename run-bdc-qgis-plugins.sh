@@ -19,10 +19,12 @@
 
 xhost +local:docker
 
-docker run -it \
-	--rm \
+docker run -it --rm \
 	-e DISPLAY=$DISPLAY \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	-v $PWD:/home/$USER \
 	--device /dev/dri \
+	--name bdc_qgis_plugins \
 	bdc_qgis_plugins/qgis:3.42 qgis
+
+xhost -local:docker
